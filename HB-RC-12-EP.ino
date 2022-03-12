@@ -7,7 +7,7 @@
 
 //#define NDISPLAY
 
-#define DISPLAY_COLORED   1       // 1 = Farbdisplay; 0 = schwarz/weiß Display
+#define DISPLAY_COLORED   0       // 1 = Farbdisplay; 0 = schwarz/weiß Display
 
 //////////////////// DISPLAY DEFINITIONS /////////////////////////////////////
 #include <GxEPD.h>
@@ -15,7 +15,8 @@
 #include <GxGDEW029Z10/GxGDEW029Z10.h>  // 2.9" b/w/r
 //#include <GxGDEW026Z39/GxGDEW026Z39.h>    // 2.6" b/w/r
 #else
-#include <GxGDEW029T5/GxGDEW029T5.h>      // 2.9" b/w
+//#include <GxGDEW029T5/GxGDEW029T5.h>      // 2.9" b/w
+#include <GxGDEM029T94/GxGDEM029T94.h>      // 2.9" b/w raw Waveshare panel bought from Eckstein in Mar 2022
 #endif
 #include <GxIO/GxIO_SPI/GxIO_SPI.h>
 #include <GxIO/GxIO.h>
@@ -51,9 +52,8 @@ U8G2_FONTS_GFX u8g2Fonts(display);
 //#define CC1101_MISO_PIN     6 // PB6
 
 #define CONFIG_BUTTON_PIN   1   // PB1
-#define LED_PIN_1          19   // PC3
-//#define LED_PIN_2          10   // uncomment if you use DualStatusLed, TomMajor PCB 1.00, LED2 on INT0
-//#define LED_PIN_2          0    // uncomment if you use DualStatusLed, TomMajor PCB 1.01, LED2 on PB0
+#define LED_PIN_1          10   // PD2
+#define LED_PIN_2          0    // PB0
 
 #define BTN01_PIN          A5 // PA5   Key Pattern
 #define BTN02_PIN          18 // PC2     1 --- 2
@@ -94,7 +94,7 @@ DisplayLineConfig DisplayLines[CHANNEL_COUNT];
 
 const struct DeviceInfo PROGMEM devinfo = {
   {0xf3, 0x46 - DISPLAY_COLORED, 0x00},   // Device ID
-  "JPRCEP0001",                           // Device Serial
+  "SGRCEP0001",                           // Device Serial
   {0xf3, 0x46 - DISPLAY_COLORED},         // Device Model
   0x10,                                   // Firmware Version
   as::DeviceType::Remote,                 // Device Type
